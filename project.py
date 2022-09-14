@@ -61,17 +61,7 @@ def clean_data(df: pd.DataFrame) -> pd.DataFrame:
 def filter_data(
     df: pd.DataFrame, account_selections: list[str], symbol_selections: list[str]
 ) -> pd.DataFrame:
-    """
-    Returns Dataframe with only accounts and symbols selected
 
-    Args:
-        df (pd.DataFrame): clean fidelity csv data, including account_name and symbol columns
-        account_selections (list[str]): list of account names to include
-        symbol_selections (list[str]): list of symbols to include
-
-    Returns:
-        pd.DataFrame: data only for the given accounts and symbols
-    """
     df = df.copy()
     df = df[
         df.account_name.isin(account_selections) & df.symbol.isin(symbol_selections)
@@ -79,32 +69,6 @@ def filter_data(
 
     return df
 
-
-def main() -> None:
-    st.header("Fidelity Account Overview :moneybag: :dollar: :bar_chart:")
-
-    with st.expander("How to Use This"):
-        st.write(Path("README.md").read_text())
-
-    st.subheader("Upload your CSV from Fidelity")
-    uploaded_data = st.file_uploader(
-        "Drag and Drop or Click to Upload", type=".csv", accept_multiple_files=False
-    )
-
-    if uploaded_data is None:
-        st.info("Using example data. Upload a file above to use your own data!")
-        uploaded_data = open("example.csv", "r")
-    else:
-        st.success("Uploaded your file!")
-
-    df = pd.read_csv(uploaded_data)
-    with st.expander("Raw Dataframe"):
-        st.write(df)
-
-    df = clean_data(df)
-    with st.expander("Cleaned Data"):
-        st.write(df)
-        
 ##################################################################
     st.sidebar.subheader("Search Engine")
     
@@ -146,9 +110,39 @@ def main() -> None:
     st.sidebar.write('Start date is:', Start_date)
     
     End_date = st.sidebar.date_input(
-     "End date", min_value=Start_date)
+     "End date")
     st.sidebar.write('End date is:', End_date)
+    
 ##################################################################
+
+
+def main() -> None:
+    head="키워드 "+ keyword +"에 대한 검색결과는 다음과 같습니다."
+    st.header()
+
+    with st.expander("How to Use This"):
+        st.write(Path("README.md").read_text())
+
+    st.subheader("Upload your CSV from Fidelity")
+    uploaded_data = st.file_uploader(
+        "Drag and Drop or Click to Upload", type=".csv", accept_multiple_files=False
+    )
+
+    if uploaded_data is None:
+        st.info("Using example data. Upload a file above to use your own data!")
+        uploaded_data = open("example2.csv", "r")
+    else:
+        st.success("Uploaded your file!")
+
+    df = pd.read_csv(uploaded_data)
+    with st.expander("Raw Dataframe"):
+        st.write(df)
+
+    df = clean_data(df)
+    with st.expander("Cleaned Data"):
+        st.write(df)
+        
+
     
     gb = GridOptionsBuilder.from_dataframe(df)
     gb.configure_columns(
