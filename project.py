@@ -150,7 +150,7 @@ def main() -> None:
      platform.append('instagram')
 ###################################################################   
    
-    accounts = platform
+    accounts = ['naver_news','naver_cafe','naver_blog', 'daum_news','daum_cafe','daum_blog','youtube','tweeter','facebook','instagram']
     account_selections = st.sidebar.multiselect(
         "Select Accounts to View", options=accounts, default=accounts
     )
