@@ -73,7 +73,7 @@ def filter_data(
     st.sidebar.subheader("Search Engine")
     
     keyword = st.sidebar.text_input('keyword', '탈원전')
-    if keyword is empty:
+    if keyword="":
         keyword="탈원전"
     st.sidebar.write('keyword is', keyword)
 
