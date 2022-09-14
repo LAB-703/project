@@ -9,6 +9,13 @@ import pandas as pd
 import plotly.express as px
 import numpy as np
 
+st.set_page_config(
+        "Search Engine Dashboard",
+        "📈",
+        initial_sidebar_state="expanded",
+        layout="wide",
+    )
+
 # 메인메뉴 없애고, 저작권 표시
 hide_menu='''
 <style>
@@ -99,12 +106,7 @@ COMMON_ARGS = {
     ],
 }
 
-st.set_page_config(
-        "Search Engine Dashboard",
-        "📈",
-        initial_sidebar_state="expanded",
-        layout="wide",
-    )
+
 
 
 ##################################################################
