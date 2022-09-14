@@ -115,109 +115,14 @@ def filter_data(
     st.sidebar.write('End date is:', End_date)
     
 ##################################################################
-
-
-def main() -> None:
-    head="키워드 "+ "탈원전" +"에 대한 검색결과는 다음과 같습니다."
-    st.header(head)
-
-    with st.expander("How to Use This"):
-        st.write(Path("README.md").read_text())
-
-    st.subheader("Upload your CSV from Fidelity")
-    uploaded_data = st.file_uploader(
-        "Drag and Drop or Click to Upload", type=".csv", accept_multiple_files=False
-    )
-
-    if uploaded_data is None:
-        st.info("Using example data. Upload a file above to use your own data!")
-        uploaded_data = open("example2.csv", "r")
-    else:
-        st.success("Uploaded your file!")
-
-    df = pd.read_csv(uploaded_data)
-    with st.expander("Raw Dataframe"):
-        st.write(df)
-
-    df = clean_data(df)
-    with st.expander("Cleaned Data"):
-        st.write(df)
-        
-
-    
-    gb = GridOptionsBuilder.from_dataframe(df)
-    gb.configure_columns(
-        (
-            "last_price_change",
-            "total_gain_loss_dollar",
-            "total_gain_loss_percent",
-            "today's_gain_loss_dollar",
-            "today's_gain_loss_percent",
-        ),
-        cellStyle=cellsytle_jscode,
-    )
-    gb.configure_pagination()
-    gb.configure_columns(("account_name", "symbol"), pinned=True)
-    gridOptions = gb.build()
-
-    AgGrid(df, gridOptions=gridOptions, allow_unsafe_jscode=True)
-
-    def draw_bar(y_val: str) -> None:
-        fig = px.bar(df, y=y_val, x="symbol", **COMMON_ARGS)
-        fig.update_layout(barmode="stack", xaxis={"categoryorder": "total descending"})
-        chart(fig)
-
-    account_plural = "s" if len(account_selections) > 1 else ""
-    st.subheader(f"Value of Account{account_plural}")
-    totals = df.groupby("account_name", as_index=False).sum()
-    if len(account_selections) > 1:
-        st.metric(
-            "Total of All Accounts",
-            f"${totals.current_value.sum():.2f}",
-            f"{totals.total_gain_loss_dollar.sum():.2f}",
-        )
-    for column, row in zip(st.columns(len(totals)), totals.itertuples()):
-        column.metric(
-            row.account_name,
-            f"${row.current_value:.2f}",
-            f"{row.total_gain_loss_dollar:.2f}",
-        )
-
-    fig = px.bar(
-        totals,
-        y="account_name",
-        x="current_value",
-        color="account_name",
-        color_discrete_sequence=px.colors.sequential.Greens,
-    )
-    fig.update_layout(barmode="stack", xaxis={"categoryorder": "total descending"})
-    chart(fig)
-
-    st.subheader("Value of each Symbol")
-    draw_bar("current_value")
-
-    st.subheader("Value of each Symbol per Account")
-    fig = px.sunburst(
-        df, path=["account_name", "symbol"], values="current_value", **COMMON_ARGS
-    )
-    fig.update_layout(margin=dict(t=0, b=0, l=0, r=0))
-    chart(fig)
-
-    st.subheader("Value of each Symbol")
-    fig = px.pie(df, values="current_value", names="symbol", **COMMON_ARGS)
-    fig.update_layout(margin=dict(t=0, b=0, l=0, r=0))
-    chart(fig)
-
-    st.subheader("Total Value gained each Symbol")
-    draw_bar("total_gain_loss_dollar")
-    st.subheader("Total Percent Value gained each Symbol")
-    draw_bar("total_gain_loss_percent")
+head="키워드" +"탈원전"+"에 대한 검색결과는 다음과 같습니다."
+st.header(
 
 
 if __name__ == "__main__":
     st.set_page_config(
-        "Fidelity Account View by Gerard Bentley",
-        "📊",
+        "Search Engine Dashboard",
+        "📈",
         initial_sidebar_state="expanded",
         layout="wide",
     )
