@@ -61,5 +61,5 @@ for platform in platform_selections:
     dataframe=df[df['platform']==platform]
     expander.write(dataframe)
     
-    for data in dataframe:
-        st.write(data)
+    for i in range(0,len(dataframe)):
+        st.write(dataframe.iloc[3][i])
