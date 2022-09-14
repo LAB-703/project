@@ -65,8 +65,7 @@ for platform in platform_selections:
     
     for i in range(0,len(dataframe)):
         info="작성자 : "+str(dataframe.iloc[i][7])+" | 작성일 : "+str(dataframe.iloc[i][5])
-        link="| [원문보기]("+str(dataframe.iloc[i][0])+")"
-        expander.write(str(dataframe.iloc[i][0]))
+        link="| [원문보기]("+str(dataframe.iloc[i][1])+")"
         expander.write(info+link)
         if dataframe.iloc[i][8] is np.NaN:
             expander.write("삭제된 댓글입니다.")
