@@ -62,4 +62,4 @@ for platform in platform_selections:
     expander.write(dataframe)
     
     for i in range(0,len(dataframe)):
-        st.write(dataframe.iloc[3][i])
+        expander.write(dataframe.iloc[i][3])
