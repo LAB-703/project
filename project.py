@@ -107,11 +107,48 @@ def main() -> None:
 
     st.sidebar.subheader("Filter Displayed Accounts")
     
-    def platform(p):
-        p = st.checkbox('naver_news')
-        if p:
-         st.write('naver_news')
-    platform(naver_news)
+    naver_news = st.sidebar.checkbox('naver_news')
+    if naver_news:
+     st.sidebar.write('naver_news')
+    
+    naver_cafe = st.sidebar.checkbox('naver_cafe')
+    if naver_cafe:
+     st.sidebar.write('naver_cafe')
+    
+    naver_blog = st.sidebar.checkbox('naver_blog')
+    if naver_blog:
+     st.sidebar.write('naver_blog')
+    
+    daum_news = st.sidebar.checkbox('daum_news')
+    if daum_news:
+     st.sidebar.write('daum_news')
+    
+    daum_cafe = st.sidebar.checkbox('daum_cafe')
+    if daum_cafe:
+     st.sidebar.write('daum_cafe')
+    
+    daum_blog = st.sidebar.checkbox('daum_blog')
+    if daum_blog:
+     st.sidebar.write('daum_blog')
+    
+    
+    youtube = st.sidebar.checkbox('youtube')
+    if youtube:
+     st.sidebar.write('youtube')
+    
+    tweeter = st.sidebar.checkbox('tweeter')
+    if tweeter:
+     st.sidebar.write('tweeter')
+    
+    facebook = st.sidebar.checkbox('facebook')
+    if facebook:
+     st.sidebar.write('facebook')
+    instagram = st.sidebar.checkbox('instagram')
+    if instagram:
+     st.sidebar.write('instagram')
+    
+    
+   
     
 
     accounts = list(df.account_name.unique())
