@@ -106,6 +106,12 @@ def main() -> None:
         st.write(df)
 
     st.sidebar.subheader("Filter Displayed Accounts")
+    
+    naver_news = st.checkbox('naver_news')
+
+    if naver_news:
+     st.write('naver_news')
+    
 
     accounts = list(df.account_name.unique())
     account_selections = st.sidebar.multiselect(
