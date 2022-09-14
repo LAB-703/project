@@ -73,8 +73,7 @@ def filter_data(
     st.sidebar.subheader("Search Engine")
     
     keyword = st.sidebar.text_input('keyword', '탈원전')
-    if keyword="":
-        keyword="탈원전"
+    st.write(keyword)
     st.sidebar.write('keyword is', keyword)
 
    
@@ -119,7 +118,7 @@ def filter_data(
 
 
 def main() -> None:
-    head="키워드 "+ keyword +"에 대한 검색결과는 다음과 같습니다."
+    head="키워드 "+ "탈원전" +"에 대한 검색결과는 다음과 같습니다."
     st.header(head)
 
     with st.expander("How to Use This"):
