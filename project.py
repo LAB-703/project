@@ -29,53 +29,6 @@ st.set_page_config(
     )
 
 
-@st.experimental_memo
-def clean_data(df: pd.DataFrame) -> pd.DataFrame:
-    """
-    Take Raw Fidelity Dataframe and return usable dataframe.
-    - snake_case headers
-    - Include 401k by filling na type
-    - Drop Cash accounts and misc text
-    - Clean $ and % signs from values and convert to floats
-
-    Args:
-        df (pd.DataFrame): Raw fidelity csv data
-
-    Returns:
-        pd.DataFrame: cleaned dataframe with features above
-    """
-    df = df.copy()
-    df.columns = df.columns.str.lower().str.replace(" ", "_", regex=False).str.replace("/", "_", regex=False)
-
-    df.type = df.type.fillna("unknown")
-    df = df.dropna()
-
-    price_index = df.columns.get_loc("last_price")
-    cost_basis_index = df.columns.get_loc("cost_basis_per_share")
-    df[df.columns[price_index : cost_basis_index + 1]] = df[
-        df.columns[price_index : cost_basis_index + 1]
-    ].transform(lambda s: s.str.replace("$", "", regex=False).str.replace("%", "", regex=False).astype(float))
-
-    quantity_index = df.columns.get_loc("quantity")
-    most_relevant_columns = df.columns[quantity_index : cost_basis_index + 1]
-    first_columns = df.columns[0:quantity_index]
-    last_columns = df.columns[cost_basis_index + 1 :]
-    df = df[[*most_relevant_columns, *first_columns, *last_columns]]
-    return df
-
-
-@st.experimental_memo
-def filter_data(
-    df: pd.DataFrame, account_selections: list[str], symbol_selections: list[str]
-) -> pd.DataFrame:
-
-    df = df.copy()
-    df = df[
-        df.account_name.isin(account_selections) & df.symbol.isin(symbol_selections)
-    ]
-
-    return df
-
 ##################################################################
     st.sidebar.subheader("Search Engine")
     
@@ -90,28 +43,6 @@ def filter_data(
     )
 
     st.subheader("Selected Account and Ticker Data")
-    cellsytle_jscode = JsCode(
-        """
-    function(params) {
-        if (params.value > 0) {
-            return {
-                'color': 'white',
-                'backgroundColor': 'forestgreen'
-            }
-        } else if (params.value < 0) {
-            return {
-                'color': 'white',
-                'backgroundColor': 'crimson'
-            }
-        } else {
-            return {
-                'color': 'white',
-                'backgroundColor': 'slategray'
-            }
-        }
-    };
-    """
-    )
 
     Start_date = st.sidebar.date_input(
      "Start date")
@@ -122,5 +53,5 @@ def filter_data(
     st.sidebar.write('End date is:', End_date)
     
 ##################################################################
-head="키워드" +"탈원전"+"에 대한 검색결과는 다음과 같습니다."
-st.header(head)
+    head="키워드 " +"탈원전"+"에 대한 검색결과는 다음과 같습니다."
+    st.header(head)
