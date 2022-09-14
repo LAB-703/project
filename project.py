@@ -53,3 +53,6 @@ st.sidebar.write('End date is:', End_date)
 ##############################################################
 head="키워드 " +keyword+"에 대한 검색결과는 다음과 같습니다."
 st.header(head)
+
+df=pd.read_csv("example2.csv", encoding='utf8')
+st.dataframe(df)
