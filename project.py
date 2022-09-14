@@ -1,12 +1,12 @@
-import functools
+#import functools
 from pathlib import Path
 
 import streamlit as st
-from st_aggrid import AgGrid
-from st_aggrid.shared import JsCode
-from st_aggrid.grid_options_builder import GridOptionsBuilder
+#from st_aggrid import AgGrid
+#from st_aggrid.shared import JsCode
+#from st_aggrid.grid_options_builder import GridOptionsBuilder
 import pandas as pd
-import plotly.express as px
+#import plotly.express as px
 import numpy as np
 
 st.set_page_config(
@@ -93,18 +93,18 @@ div.streamlit-expanderHeader.st-ae.st-bq.st-ag.st-ah.st-ai.st-aj.st-br.st-bs.st-
 
 st.markdown(hide_menu, unsafe_allow_html=True)
 
-chart = functools.partial(st.plotly_chart, use_container_width=True)
-COMMON_ARGS = {
-    "color": "symbol",
-    "color_discrete_sequence": px.colors.sequential.Greens,
-    "hover_data": [
-        "account_name",
-        "percent_of_account",
-        "quantity",
-        "total_gain_loss_dollar",
-        "total_gain_loss_percent",
-    ],
-}
+#chart = functools.partial(st.plotly_chart, use_container_width=True)
+#COMMON_ARGS = {
+#    "color": "symbol",
+#    "color_discrete_sequence": px.colors.sequential.Greens,
+#    "hover_data": [
+#        "account_name",
+#        "percent_of_account",
+#        "quantity",
+#        "total_gain_loss_dollar",
+#        "total_gain_loss_percent",
+#    ],
+#}
 
 
 
