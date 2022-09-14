@@ -107,10 +107,11 @@ def main() -> None:
 
     st.sidebar.subheader("Filter Displayed Accounts")
     
-    naver_news = st.checkbox('naver_news')
-
-    if naver_news:
-     st.write('naver_news')
+    def platform(p):
+        p = st.checkbox('naver_news')
+        if p:
+         st.write('naver_news')
+    platform(naver_news)
     
 
     accounts = list(df.account_name.unique())
