@@ -60,12 +60,12 @@ df=pd.read_csv("example2.csv", encoding='utf8')
 for platform in platform_selections:
     expander = st.expander(platform)
     dataframe=df[df['platform']==platform]
-    expander.write(dataframe)
+    #expander.write(dataframe)
     
     for i in range(0,len(dataframe)):
         info="작성자 : "+str(dataframe.iloc[i][7])+" | 작성일 : "+str(dataframe.iloc[i][5])
         expander.write(info)
-        if dataframe.iloc[i][8]=="":
+        if dataframe.iloc[i][8] is None:
             expander.write("삭제된 댓글입니다.")
         else:
             expander.write(dataframe.iloc[i][8])
