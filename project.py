@@ -36,9 +36,9 @@ keyword = st.sidebar.text_input('keyword', '탈원전')
 st.sidebar.write('keyword is', keyword)
 
 
-accounts = ['naver_news','naver_cafe','naver_blog', 'daum_news','daum_cafe','daum_blog','youtube','tweeter','facebook','instagram']
-account_selections = st.sidebar.multiselect(
-    "Select Accounts to View", options=accounts, default=accounts
+platform = ['naver_news','naver_cafe','naver_blog', 'daum_news','daum_cafe','daum_blog','youtube','tweeter','facebook','instagram']
+platform_selections = st.sidebar.multiselect(
+    "Select Accounts to View", options=platform, default=platform
 )
 
 
@@ -56,3 +56,11 @@ st.header(head)
 
 df=pd.read_csv("example2.csv", encoding='utf8')
 st.dataframe(df)
+
+for platform in platform_selections:
+    expander = st.expander(platform)
+    expander.write("""
+         The chart above shows some numbers I picked for you.
+         I rolled actual dice for these, so they're *guaranteed* to
+         be random.
+     """)
