@@ -107,48 +107,7 @@ def main() -> None:
         
 ##################################################################
     st.sidebar.subheader("Filter Displayed Accounts")
-    
-    platform=[]
-    naver_news = st.sidebar.checkbox('naver_news')
-    if naver_news:
-     platform.append('naver_news')
-    
-    naver_cafe = st.sidebar.checkbox('naver_cafe')
-    if naver_cafe:
-     platform.append('naver_cafe')
-    
-    naver_blog = st.sidebar.checkbox('naver_blog')
-    if naver_blog:
-     platform.append('naver_blog')
-    
-    daum_news = st.sidebar.checkbox('daum_news')
-    if daum_news:
-     platform.append('daum_news')
-    
-    daum_cafe = st.sidebar.checkbox('daum_cafe')
-    if daum_cafe:
-     platform.append('daum_cafe')
-    
-    daum_blog = st.sidebar.checkbox('daum_blog')
-    if daum_blog:
-     platform.append('daum_blog')
-   
-    youtube = st.sidebar.checkbox('youtube')
-    if youtube:
-     st.sidebar.write('youtube')
-    
-    tweeter = st.sidebar.checkbox('tweeter')
-    if tweeter:
-     platform.append('tweeter')
-    
-    facebook = st.sidebar.checkbox('facebook')
-    if facebook:
-     platform.append('facebook')
-    
-    instagram = st.sidebar.checkbox('instagram')
-    if instagram:
-     platform.append('instagram')
-###################################################################   
+
    
     accounts = ['naver_news','naver_cafe','naver_blog', 'daum_news','daum_cafe','daum_blog','youtube','tweeter','facebook','instagram']
     account_selections = st.sidebar.multiselect(
@@ -179,6 +138,8 @@ def main() -> None:
     """
     )
 
+##################################################################
+    
     gb = GridOptionsBuilder.from_dataframe(df)
     gb.configure_columns(
         (
