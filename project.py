@@ -30,28 +30,28 @@ st.set_page_config(
 
 
 ##################################################################
-    st.sidebar.subheader("Search Engine")
-    
-    keyword = st.sidebar.text_input('keyword', '탈원전')
-    st.write(keyword)
-    st.sidebar.write('keyword is', keyword)
+st.sidebar.subheader("Search Engine")
 
-   
-    accounts = ['naver_news','naver_cafe','naver_blog', 'daum_news','daum_cafe','daum_blog','youtube','tweeter','facebook','instagram']
-    account_selections = st.sidebar.multiselect(
-        "Select Accounts to View", options=accounts, default=accounts
-    )
+keyword = st.sidebar.text_input('keyword', '탈원전')
+st.write(keyword)
+st.sidebar.write('keyword is', keyword)
 
-    st.subheader("Selected Account and Ticker Data")
 
-    Start_date = st.sidebar.date_input(
-     "Start date")
-    st.sidebar.write('Start date is:', Start_date)
-    
-    End_date = st.sidebar.date_input(
-     "End date")
-    st.sidebar.write('End date is:', End_date)
-    
-##################################################################
-    head="키워드 " +"탈원전"+"에 대한 검색결과는 다음과 같습니다."
-    st.header(head)
+accounts = ['naver_news','naver_cafe','naver_blog', 'daum_news','daum_cafe','daum_blog','youtube','tweeter','facebook','instagram']
+account_selections = st.sidebar.multiselect(
+    "Select Accounts to View", options=accounts, default=accounts
+)
+
+st.subheader("Selected Account and Ticker Data")
+
+Start_date = st.sidebar.date_input(
+ "Start date")
+st.sidebar.write('Start date is:', Start_date)
+
+End_date = st.sidebar.date_input(
+ "End date")
+st.sidebar.write('End date is:', End_date)
+
+##############################################################
+head="키워드 " +"탈원전"+"에 대한 검색결과는 다음과 같습니다."
+st.header(head)
