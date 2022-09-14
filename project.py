@@ -55,9 +55,11 @@ head="키워드 " +keyword+"에 대한 플랫폼별 검색결과는 다음과 �
 st.header(head)
 
 df=pd.read_csv("example2.csv", encoding='utf8')
-st.dataframe(df)
 
 for platform in platform_selections:
     expander = st.expander(platform)
     dataframe=df[df['platform']==platform]
     expander.write(dataframe)
+    
+    for data in dataframe:
+    st.write(data)
