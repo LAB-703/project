@@ -21,6 +21,13 @@ COMMON_ARGS = {
     ],
 }
 
+st.set_page_config(
+        "Search Engine Dashboard",
+        "📈",
+        initial_sidebar_state="expanded",
+        layout="wide",
+    )
+
 
 @st.experimental_memo
 def clean_data(df: pd.DataFrame) -> pd.DataFrame:
@@ -117,13 +124,3 @@ def filter_data(
 ##################################################################
 head="키워드" +"탈원전"+"에 대한 검색결과는 다음과 같습니다."
 st.header(head)
-
-
-if __name__ == "__main__":
-    st.set_page_config(
-        "Search Engine Dashboard",
-        "📈",
-        initial_sidebar_state="expanded",
-        layout="wide",
-    )
-    main()
