@@ -62,6 +62,7 @@ for platform in platform_selections:
     expander.write(dataframe)
     
     for i in range(0,len(dataframe)):
-        expander.write(dataframe.iloc[i][7]+" | "+dataframe.iloc[i][5])
+        info=str(dataframe.iloc[i][7])+" | "+str(dataframe.iloc[i][5])
+        expander.write(info)
         expander.write(dataframe.iloc[i][8])
-        expander.write()
+        expander.write("")
