@@ -62,4 +62,4 @@ for platform in platform_selections:
     expander.write(dataframe)
     
     for data in dataframe:
-    st.write(data)
+        st.write(data)
