@@ -106,7 +106,10 @@ def main() -> None:
         st.write(df)
         
 ##################################################################
-    st.sidebar.subheader("Filter Displayed Accounts")
+    st.sidebar.subheader("Search Engine")
+    
+    keyword = st.sidebar.text_input('keyword', '탈원전')
+    st.sidebar.write('keyword is', keyword)
 
    
     accounts = ['naver_news','naver_cafe','naver_blog', 'daum_news','daum_cafe','daum_blog','youtube','tweeter','facebook','instagram']
@@ -138,6 +141,13 @@ def main() -> None:
     """
     )
 
+    Start_date = st.sidebar.date_input(
+     "Start date")
+    st.sidebar.write('Start date is:', Start_date)
+    
+    End_date = st.sidebar.date_input(
+     "End date")
+    st.sidebar.write('End date is:', End_date)
 ##################################################################
     
     gb = GridOptionsBuilder.from_dataframe(df)
