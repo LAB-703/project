@@ -104,65 +104,57 @@ def main() -> None:
     df = clean_data(df)
     with st.expander("Cleaned Data"):
         st.write(df)
-
+        
+##################################################################
     st.sidebar.subheader("Filter Displayed Accounts")
     
+    platform=[]
     naver_news = st.sidebar.checkbox('naver_news')
     if naver_news:
-     st.sidebar.write('naver_news')
+     platform.append('naver_news')
     
     naver_cafe = st.sidebar.checkbox('naver_cafe')
     if naver_cafe:
-     st.sidebar.write('naver_cafe')
+     platform.append('naver_cafe')
     
     naver_blog = st.sidebar.checkbox('naver_blog')
     if naver_blog:
-     st.sidebar.write('naver_blog')
+     platform.append('naver_blog')
     
     daum_news = st.sidebar.checkbox('daum_news')
     if daum_news:
-     st.sidebar.write('daum_news')
+     platform.append('daum_news')
     
     daum_cafe = st.sidebar.checkbox('daum_cafe')
     if daum_cafe:
-     st.sidebar.write('daum_cafe')
+     platform.append('daum_cafe')
     
     daum_blog = st.sidebar.checkbox('daum_blog')
     if daum_blog:
-     st.sidebar.write('daum_blog')
-    
-    
+     platform.append('daum_blog')
+   
     youtube = st.sidebar.checkbox('youtube')
     if youtube:
      st.sidebar.write('youtube')
     
     tweeter = st.sidebar.checkbox('tweeter')
     if tweeter:
-     st.sidebar.write('tweeter')
+     platform.append('tweeter')
     
     facebook = st.sidebar.checkbox('facebook')
     if facebook:
-     st.sidebar.write('facebook')
+     platform.append('facebook')
+    
     instagram = st.sidebar.checkbox('instagram')
     if instagram:
-     st.sidebar.write('instagram')
-    
-    
+     platform.append('instagram')
+###################################################################   
    
-    
-
-    accounts = list(df.account_name.unique())
+    accounts = platform
     account_selections = st.sidebar.multiselect(
         "Select Accounts to View", options=accounts, default=accounts
     )
-    st.sidebar.subheader("Filter Displayed Tickers")
 
-    symbols = list(df.loc[df.account_name.isin(account_selections), "symbol"].unique())
-    symbol_selections = st.sidebar.multiselect(
-        "Select Ticker Symbols to View", options=symbols, default=symbols
-    )
-
-    df = filter_data(df, account_selections, symbol_selections)
     st.subheader("Selected Account and Ticker Data")
     cellsytle_jscode = JsCode(
         """
