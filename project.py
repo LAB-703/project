@@ -62,6 +62,6 @@ for platform in platform_selections:
     expander.write(dataframe)
     
     for i in range(0,len(dataframe)):
-        expander.write("접근성 👩‍🦽",df.iloc[-3][1],"| 안전성 👩‍",df.iloc[-3][2],"| 쾌적성 ✨",df.iloc[-3][3],"방문일 : ",df.iloc[-3][5])
-        expander.write(df.iloc[-3][4])
+        expander.write("접근성 👩‍🦽",dataframe.iloc[-3][1],"| 안전성 👩‍",dataframe.iloc[-3][2],"| 쾌적성 ✨",dataframe.iloc[-3][3],"방문일 : ",dataframe.iloc[-3][5])
+        expander.write(dataframe.iloc[-3][4])
        # expander.write(dataframe.iloc[i][7], " | ", dataframe.iloc[i][5])
