@@ -146,7 +146,7 @@ def main() -> None:
     st.sidebar.write('Start date is:', Start_date)
     
     End_date = st.sidebar.date_input(
-     "End date")
+     "End date", min_value=Start_date)
     st.sidebar.write('End date is:', End_date)
 ##################################################################
     
