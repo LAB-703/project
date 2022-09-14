@@ -52,10 +52,11 @@ End_date = st.sidebar.date_input(
 st.sidebar.write('End date is:', End_date)
 
 ##############################################################
-head="키워드 " +keyword+"에 대한 플랫폼별 검색결과는 다음과 같습니다."
-st.header(head)
 
 df=pd.read_csv("example2.csv", encoding='utf8')
+
+head="키워드 " +keyword+"에 대한 플랫폼별 검색결과는 "+str(len(df))+"건으로 다음과 같습니다."
+st.header(head)
 
 for platform in platform_selections:
     expander = st.expander(platform)
@@ -65,6 +66,7 @@ for platform in platform_selections:
     for i in range(0,len(dataframe)):
         info="작성자 : "+str(dataframe.iloc[i][7])+" | 작성일 : "+str(dataframe.iloc[i][5])
         link="| [원문보기]("+str(dataframe.iloc[i][0])+")"
+        expander.write(str(dataframe.iloc[i][0]))
         expander.write(info+link)
         if dataframe.iloc[i][8] is np.NaN:
             expander.write("삭제된 댓글입니다.")
